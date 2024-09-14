@@ -1,0 +1,29 @@
+name: Update Dependencies and Package JSON
+
+on:
+  schedule:
+    # Runs at 00:00 on Wednesday to ensure dependencies are up-to-date
+    - cron: '0 0 * * 3'
+
+env:
+  AUTHOR_EMAIL: ashikkumar23@gmail.com
+  AUTHOR_NAME: Ashik Kumar
+  LOG_LEVEL: debug
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v3
+
+      - name: Configure Git remote URL
+        run: git remote set-url --push origin https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+
+      - name: Update package.json
+        uses: taichi/actions-package-update@master
+        with:
+          args: -u --packageFile package.json --loglevel verbose
+        env:
+          EXECUTE: "true"

@@ -1,0 +1,5 @@
+import './apiTest/auth-user.cy.js'
+import './apiTest/get-articles.cy.js'
+import './apiTest/create-articles.cy.js'
+import './apiTest/update-article.cy.js'
+import './apiTest/delete-articles.cy.js'

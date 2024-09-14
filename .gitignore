@@ -7,6 +7,19 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+
+
+# test videos and screenshots
+cypress/videos
+cypress/screenshots
+
+# dev config
+cypress.env.json
+
+# eslint
+.eslintcache
+
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
